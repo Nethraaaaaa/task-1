@@ -1,0 +1,243 @@
+@use "../../../styles/theme.scss" as *;
+@use "../../../styles/typography" as *;
+
+$primary-color: #74c5b5;
+$secondary-color: #27187e;
+$tertiary-color: #f09731;
+
+$background-color: #eaedf7;
+$internal-bg: #f1f5fa;
+$map-color: #d9dff2;
+
+.header-container {
+  background-color: white;
+  width: 100%;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px;
+  background-color: $internal-bg;
+
+  .header-logo {
+    height: 24px;
+    width: auto;
+  }
+
+  .user-icon {
+    color: $primary-color !important;
+    height: 24px;
+  }
+}
+
+.navbar-scroll-container {
+  .nav-item {
+    padding: 0.75rem 1.5rem;
+    color: #1e1e92;
+    font-weight: 300;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    font-size: 12px;
+
+    &:hover {
+      color: $tertiary-color;
+    }
+
+    &.active {
+      border-bottom: 3px solid $tertiary-color;
+      font-weight: 600;
+    }
+  }
+}
+
+.dashboard-container {
+  background-color: $internal-bg;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.subtitle {
+  color: $tertiary-color;
+  font-size: 10px;
+  font-weight: 500;
+  margin-bottom: 0.005rem;
+  padding: 0px;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 4px;
+  flex-wrap: nowrap;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: $secondary-color;
+  white-space: nowrap;
+  margin-right: auto;
+}
+
+.search-container {
+  height: 26px;
+  font-size: 12px;
+  max-width: 100%;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #2a2a75;
+  border-radius: 2px;
+  background: white;
+  max-width: 100%;
+  gap: 10px;
+
+  .search-icon {
+    color: orange;
+    margin-right: 0.5rem;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  input {
+    border: none;
+    outline: none;
+    flex: 1;
+    font-family: "Montserrat";
+    font-size: 12px;
+    color: $secondary-color;
+  }
+}
+
+.year-dropdown {
+  height: 26px;
+  font-size: 12px;
+  max-width: 100%;
+  padding: 4px 8px;
+  display: flex;
+  align-items: flex-start;
+  background-color: #fff;
+  border: 1px solid #2a2a75;
+  border-radius: 2px;
+  font-family: "Montserrat";
+  gap: 10px;
+}
+
+.download-button {
+  display: flex;
+  align-items: flex-start;
+  background-color: #fff;
+  color: #2a2a75;
+  border: 1px solid #2a2a75;
+  padding: 4px 8px;
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 12px;
+  max-width: 100%;
+  height: 26px;
+
+  mat-icon {
+    font-size: 18px;
+    // margin-right: 5px;
+    color: $tertiary-color;
+  }
+}
+
+.table-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.tables-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.table-box {
+  flex: 1;
+  margin-top: 10px;
+  border: 1px solid $secondary-color;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table-title {
+  margin: 0;
+  padding: 10px;
+  background-color: $primary-color;
+  color: white;
+  text-align: left;
+}
+
+.fleet-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: rgba($secondary-color, 0.2);
+  color: $secondary-color;
+  font-size: 12px;
+  padding: 6px;
+  font-weight: 500;
+}
+
+td {
+  font-size: 14px;
+  text-align: center;
+}
+
+.map-container {
+  text-align: center;
+}
+
+/* Custom scrollbar styles */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #f1f1fa;
+  border-radius: 4px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background-color: #27187e;
+  border-radius: 4px;
+}
+
+/* Webkit browsers (Chrome, Edge, Safari) */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px; /* Thin horizontal scrollbar */
+  width: 8px; /* Thin vertical scrollbar if needed */
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #e0e6f5;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary-500, #27187e);
+  border-radius: 4px;
+}
+
+/* Hide all scrollbar buttons (including left and right arrows) */
+.custom-scrollbar::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Explicit targeting of horizontal scrollbar buttons */
+.custom-scrollbar::-webkit-scrollbar-button:horizontal:start,
+.custom-scrollbar::-webkit-scrollbar-button:horizontal:end,
+.custom-scrollbar::-webkit-scrollbar-button:horizontal:increment,
+.custom-scrollbar::-webkit-scrollbar-button:horizontal:decrement {
+  display: none;
+}

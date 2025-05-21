@@ -1,0 +1,420 @@
+@use "../../../styles/theme.scss" as *;
+@use "../../../styles/typography.scss" as *;
+
+.fleet-management-table {
+  .fleet-management-container {
+    padding: 0;
+    background-color: #f5f7fa;
+    min-height: 100h;
+    border: 1px solid #27187e;
+    border-radius: 4px; // adjust variable if using SCSS theming
+    // margin-bottom: 20px;
+  }
+
+  .fleet-management-header-wrapper {
+    width: 100%;
+
+    background-color: #82c7bd;
+    padding: 0;
+  }
+
+  .fleet-management-header {
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    height: 35px;
+    color: white;
+    justify-content: space-between;
+    max-width: 100%;
+    // overflow: hidden;
+
+    .title {
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      padding-right: 16px;
+      color: white;
+      white-space: nowrap;
+    }
+
+    .filters {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      flex: 1;
+      justify-content: right;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      .download-btn {
+        width: 25px;
+        height: 22px;
+        min-width: 25px;
+        padding: 0;
+        color: $primary-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 12px;
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 2px;
+
+        mat-icon {
+          font-size: 20px;
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+        }
+      }
+
+      .filter-field {
+        width: 100px;
+        margin: 0;
+        margin-right: 12px;
+        flex-shrink: 0;
+
+        ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+          display: none;
+        }
+
+        ::ng-deep .mat-mdc-text-field-wrapper {
+          background-color: white;
+          padding: 0;
+          height: 24px;
+          width: 100%;
+          min-width: 100px;
+        }
+
+        ::ng-deep .mat-mdc-form-field-flex {
+          min-height: 32px;
+          height: 32px;
+          width: 100%;
+          padding: 0 4px;
+        }
+
+        ::ng-deep .mat-mdc-form-field-infix {
+          padding: 0;
+          min-height: 32px;
+        }
+
+        ::ng-deep .mat-mdc-select-value {
+          min-width: 100%;
+          font-family: "Montserrat";
+          font-size: 12px;
+          color: $secondary-color;
+          flex: 1;
+        }
+
+        ::ng-deep .mat-mdc-select-arrow-wrapper {
+          height: 25px;
+        }
+
+        ::ng-deep .mdc-line-ripple {
+          display: none;
+        }
+      }
+
+      .attributes-select {
+        max-width: 200px;
+        width: 100%;
+      }
+      .settings-btn {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        padding: 0;
+        color: black;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+
+        .mat-icon {
+          font-size: 10px;
+          width: 20px;
+          height: 20px;
+          line-height: 20px;
+        }
+      }
+
+      .search-field-container {
+        min-width: 100px;
+        max-width: 150px;
+        width: 100%;
+        // color: $secondary-color;
+
+        flex-shrink: 0;
+
+        .search-field {
+          width: 100%;
+          margin: 0;
+          font-family: "Montserrat";
+
+          font-size: 12px;
+
+          ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+            display: none;
+          }
+
+          ::ng-deep .mat-mdc-text-field-wrapper {
+            background-color: white;
+            padding: 0;
+            height: 24px;
+          }
+
+          ::ng-deep .mat-mdc-form-field-flex {
+            min-height: 32px;
+            height: 25px;
+            padding: 0 8px;
+          }
+
+          ::ng-deep .mat-mdc-form-field-infix {
+            padding: 0;
+            min-height: 25px;
+            color: $secondary-color;
+          }
+
+          ::ng-deep .mat-mdc-input-element {
+            align-items: center;
+            font-family: "Montserrat";
+            font-size: 12px;
+            color: $secondary-color;
+            padding: 0;
+            min-height: 24px;
+            height: 24px;
+          }
+
+          ::ng-deep .mdc-line-ripple {
+            display: none;
+          }
+
+          mat-icon {
+            font-size: 15px;
+            // padding: 0;
+            width: 20px;
+            height: 24px;
+            line-height: 16px;
+            color: $primary-color;
+          }
+        }
+      }
+      .filter-btn {
+        width: 30px;
+        height: 22px;
+        min-width: 30px;
+        margin-left: 10px;
+        color: $primary-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border: 1px solid #e0e0e0;
+        border-radius: 2px;
+        flex-shrink: 0;
+
+        mat-icon {
+          font-size: 15px;
+          height: 17px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+
+  .fleet-table-container {
+    background-color: white;
+    margin: 16px;
+    border-radius: 2px;
+    border-color: $secondary-color;
+    overflow: auto;
+
+    .fleet-table {
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    // Make the header row light blue with a translucent effect
+    .table-header-row {
+      // background-color: rgba(240, 245, 250, 0.5);
+      min-height: 30px;
+
+      .mat-mdc-header-cell {
+        color: #27187e;
+        font-weight: 400;
+        font-size: 12px;
+        padding: 0 12px;
+        font-family: "Montserrat";
+      }
+    }
+
+    .mat-mdc-row {
+      height: 40px;
+
+      &:last-child {
+        // border-bottom: none;
+      }
+
+      .mat-mdc-cell {
+        font-size: 12px;
+        padding: 0 5px;
+        padding-bottom: 5px;
+        font-family: "Montserrat";
+        color: #27187e;
+        font-weight: 500;
+        border-bottom: none !important;
+      }
+    }
+
+    .mat-column-vessel {
+      width: 30%;
+      padding-left: 16px;
+    }
+
+    .mat-column-co2,
+    .mat-column-eua,
+    .mat-column-cii {
+      width: 20%;
+    }
+
+    .mat-column-voyages {
+      width: 10%;
+      text-align: center;
+      padding-right: 16px;
+    }
+    .vessel-info {
+      display: flex;
+      flex-direction: column;
+      font-family: "Montserrat";
+
+      .vessel-name {
+        font-weight: 400;
+        color: #27187e;
+        font-family: "Montserrat";
+      }
+
+      .vessel-imo {
+        font-size: 12px;
+        color: #27187e;
+        margin-top: 2px;
+      }
+    }
+
+    .cii-badge {
+      display: inline-flex;
+      width: 24px;
+      height: 24px;
+      border-radius: 2px;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 14px;
+      &.cii-a {
+        background-color: white;
+        color: #065f46;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      &.cii-b {
+        background-color: white;
+        color: #1e40af;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      &.cii-c {
+        background-color: white;
+        color: #92400e;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      &.cii-d,
+      &.cii-e {
+        background-color: #fee2e2;
+        color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 8px 16px 16px;
+
+    .pagination-label {
+      margin-right: 8px;
+      font-size: 12px;
+      color: #637381;
+    }
+
+    .mat-mdc-paginator {
+      background: transparent;
+    }
+  }
+
+  thead th {
+    font-weight: normal; /* Ensure all header cells have normal font weight */
+  }
+  .custom-info-icon {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .info-icon {
+    background-color: #f1f1fa; /* PRIMARY-600 */
+    color: #f5a623; /* SECONDARY-500 */
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  /* Custom scrollbar styles */
+  .scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; /* Adjust height for horizontal scrollbar */
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: #f1f1fa;
+    border-radius: 4px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: #27187e;
+    border-radius: 4px;
+  }
+
+  /* Webkit browsers (Chrome, Edge, Safari) */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 8px; /* Thin horizontal scrollbar */
+    width: 8px; /* Thin vertical scrollbar if needed */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #e0e6f5;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary-500, #27187e);
+    border-radius: 4px;
+  }
+
+  /* Hide all scrollbar buttons (including left and right arrows) */
+  .custom-scrollbar::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+
+  /* Explicit targeting of horizontal scrollbar buttons */
+  .custom-scrollbar::-webkit-scrollbar-button:horizontal:start,
+  .custom-scrollbar::-webkit-scrollbar-button:horizontal:end,
+  .custom-scrollbar::-webkit-scrollbar-button:horizontal:increment,
+  .custom-scrollbar::-webkit-scrollbar-button:horizontal:decrement {
+    display: none;
+  }
+}
