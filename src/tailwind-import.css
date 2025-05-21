@@ -1,0 +1,18 @@
+@tailwind base;
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: full;
+}
+
+/* *::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 2px;
+  border: 2px solid #27187e;
+} */
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background-color: #1c1058;
+}
+
+@tailwind components;
+@tailwind utilities;
